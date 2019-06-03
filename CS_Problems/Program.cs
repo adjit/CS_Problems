@@ -10,6 +10,11 @@ namespace CS_Problems
     {
         static void Main(string[] args)
         {
+            Tester_Singleton tester = Tester_Singleton.Instance();
+
+            Console.Write("Please enter a string to find length of longest substring: ");
+            Console.WriteLine(tester.LengthOfLongestSubstring(Console.ReadLine()));
+            Console.ReadKey();
         }
     }
 }
