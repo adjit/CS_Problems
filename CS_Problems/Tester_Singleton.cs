@@ -66,6 +66,12 @@ namespace CS_Problems
             return maxLen;
         }
 
+        //https://leetcode.com/problems/regular-expression-matching/
+        public bool regex_isMatch(string s, string p)
+        {
+            throw new NotImplementedException();
+        }
+
         public string zigZagConvert(string s, int numRows)
         {
             if (numRows <= 1 || numRows >= s.Length) return s;
@@ -82,14 +88,14 @@ namespace CS_Problems
 
             while(i < s.Length)
             {
-                if (currRow == numRows-1 || currRow == 0) incrementer *= -1;
+                if (currRow == numRows-1 || (currRow == 0 && incrementer < 0)) incrementer *= -1;
 
                 sRows[currRow].Append(s[i++]);
 
                 currRow += incrementer;
             }
 
-            for (int j = 0; i < numRows; i++) response.Append(sRows[i]);
+            for (int j = 0; j < numRows; j++) response.Append(sRows[j]);
 
             return response.ToString();
         }
