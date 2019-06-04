@@ -9,5 +9,7 @@ namespace CS_Problems
     interface ITesterInterface
     {
         int LengthOfLongestSubstring(string s);
+        bool isPalindrome(string s);
+        string zigZagConvert(string s, int numRows);
     }
 }
