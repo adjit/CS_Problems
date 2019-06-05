@@ -16,6 +16,7 @@ namespace CS_Problems
         int RomanToInt(string s);
         string LongestCommonPrefix(string[] strs);
         IList<string> LetterCombinations(string digits);
-
+        bool validParentheses(string s);
+        IList<string> GenerateParenthesis(int n);
     }
 }
