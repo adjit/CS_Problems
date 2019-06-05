@@ -12,6 +12,8 @@ namespace CS_Problems
         {
             Tester_Singleton tester = Tester_Singleton.Instance();
 
+            tester.RomanToInt("III");
+
             Console.Write("Please enter a string to find length of longest substring: ");
             Console.WriteLine(tester.LengthOfLongestSubstring(Console.ReadLine()));
             Console.ReadKey();
