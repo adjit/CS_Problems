@@ -71,5 +71,10 @@ namespace CS_Problems
         {
             return Parentheses.GenerateParenthesis(n);
         }
+
+        public int minimumDistance(int numRows, int numColumns, int[,] area)
+        {
+            return Amazon.minimumDistance(numColumns, numColumns, area);
+        }
     }
 }
