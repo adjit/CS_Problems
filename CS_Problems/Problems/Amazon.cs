@@ -38,8 +38,10 @@ namespace CS_Problems.Problems
                 downDistance = follow(new coords(1, 0), tempArea, 1, numRows, numColumns);
             }
 
-            if (rightDistance != -1 && rightDistance <= downDistance) return rightDistance;
-            else if (downDistance != -1 && downDistance <= rightDistance) return downDistance;
+            if (rightDistance != -1 && 
+                (downDistance == -1 || rightDistance <= downDistance)) return rightDistance;
+            else if (downDistance != -1 && 
+                (rightDistance == -1 || downDistance <= rightDistance)) return downDistance;
             else return -1;
         }
 
@@ -47,40 +49,40 @@ namespace CS_Problems.Problems
         {
             if (area[coord.x, coord.y] == 9) return distanceTraveled;
 
-            int leftDistance, rightDistance, upDistance, downDistance;
-            leftDistance = rightDistance = upDistance = downDistance = -1;
+            int up, down, left, right;
+            up = down = left = right = -1;
 
             area[coord.x, coord.y] = 0;
 
-            //Move left
-            if (coord.x - 1 >= 0 && (area[coord.x - 1, coord.y] == 1 || area[coord.x - 1, coord.y] == 9))
+            //Move up
+            if (coord.x - 1 >= 0 && area[coord.x - 1, coord.y] != 0)
             {
-                leftDistance = distanceTraveled;
-                leftDistance = follow(new coords(coord.x - 1, coord.y), area, ++leftDistance, nRows, nCols);
-            }
-
-            //Move right
-            if (coord.x + 1 < nCols && (area[coord.x + 1, coord.y] == 1 || area[coord.x + 1, coord.y] == 9))
-            {
-                rightDistance = distanceTraveled;
-                rightDistance = follow(new coords(coord.x + 1, coord.y), area, ++rightDistance, nRows, nCols);
+                up = distanceTraveled;
+                up = follow(new coords(coord.x - 1, coord.y), area, ++up, nRows, nCols);
             }
 
             //Move down
-            if (coord.y + 1 < nRows && (area[coord.x, coord.y+1] == 1 || area[coord.x, coord.y + 1] == 9))
+            if (coord.x + 1 < nCols && area[coord.x + 1, coord.y] != 0)
             {
-                downDistance = distanceTraveled;
-                downDistance = follow(new coords(coord.x, coord.y + 1), area, ++downDistance, nRows, nCols);
+                down = distanceTraveled;
+                down = follow(new coords(coord.x + 1, coord.y), area, ++down, nRows, nCols);
             }
 
-            //Move up
-            if (coord.y-1 >= 0 && (area[coord.x, coord.y-1] == 1 || area[coord.x, coord.y - 1] == 1))
+            //Move right
+            if (coord.y + 1 < nRows && area[coord.x, coord.y+1] != 0)
             {
-                upDistance = distanceTraveled;
-                upDistance = follow(new coords(coord.x, coord.y + 1), area, ++upDistance, nRows, nCols);
+                right = distanceTraveled;
+                right = follow(new coords(coord.x, coord.y + 1), area, ++right, nRows, nCols);
             }
 
-            int[] distances = new int[] { leftDistance, rightDistance, downDistance, upDistance };
+            //Move left
+            if (coord.y-1 >= 0 && area[coord.x, coord.y-1] != 0)
+            {
+                left = distanceTraveled;
+                left = follow(new coords(coord.x, coord.y - 1), area, ++left, nRows, nCols);
+            }
+
+            int[] distances = new int[] { up, down, right, left };
 
             int max = Int32.MaxValue;
 
@@ -90,17 +92,6 @@ namespace CS_Problems.Problems
             }
 
             return max == Int32.MaxValue ? -1 : max;
-            
-            if (leftDistance > 0 && (leftDistance < rightDistance && leftDistance < downDistance && leftDistance < upDistance))
-                return leftDistance;
-            if (rightDistance > 0 && (rightDistance < leftDistance && rightDistance < downDistance && rightDistance < upDistance))
-                return rightDistance;
-            if (downDistance > 0 && (downDistance < leftDistance && downDistance < rightDistance && downDistance < upDistance))
-                return downDistance;
-            if (upDistance > 0 && (upDistance < leftDistance && upDistance < rightDistance && upDistance < downDistance))
-                return upDistance;
-            
-            return -1;
         }
 
         private enum distance

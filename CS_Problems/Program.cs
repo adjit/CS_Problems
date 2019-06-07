@@ -12,18 +12,21 @@ namespace CS_Problems
         {
             Tester_Singleton tester = Tester_Singleton.Instance();
 
-            int[,] area = new int[3, 3]
+            int[,] area = new int[5, 5]
             {
-                { 1, 1, 1 },
-                { 0, 1, 0 },
-                { 0, 9, 0 }
+                { 1, 1, 1, 0, 0 },
+                { 1, 0, 1, 1, 1 },
+                { 1, 1, 0, 0, 1 },
+                { 0, 1, 1, 9, 1 },
+                { 1, 0, 0, 0, 1 }
             };
 
 
-            int distance = tester.minimumDistance(3, 3, area);
+            int distance = tester.minimumDistance(5, 5, area);
 
             Console.WriteLine(distance);
 
+            Console.ReadKey();
             tester.RomanToInt("III");
 
             Console.Write("Please enter a string to find length of longest substring: ");
