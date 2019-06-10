@@ -71,5 +71,10 @@ namespace CS_Problems
         {
             return Parentheses.GenerateParenthesis(n);
         }
+
+        public void BFS()
+        {
+
+        }
     }
 }
