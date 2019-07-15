@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CS_Problems.Cards;
 
 namespace CS_Problems
 {
@@ -27,7 +28,9 @@ namespace CS_Problems
             Console.WriteLine(distance);
 
             Console.ReadKey();
-            tester.RomanToInt("III");
+            // tester.RomanToInt("III");
+
+            Deck deck = new Deck(TypeOfCardDeck.PlayingCards);
 
             Console.Write("Please enter a string to find length of longest substring: ");
             Console.WriteLine(tester.LengthOfLongestSubstring(Console.ReadLine()));

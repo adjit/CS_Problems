@@ -42,6 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cards\BlackJack.cs" />
+    <Compile Include="Cards\Card.cs" />
+    <Compile Include="Cards\Deck.cs" />
+    <Compile Include="Cards\Enums.cs" />
+    <Compile Include="Cards\Interfaces.cs" />
+    <Compile Include="DesignPatterns\Singleton.cs" />
     <Compile Include="ITesterInterface.cs" />
     <Compile Include="Problems\Amazon.cs" />
     <Compile Include="Problems\Palindromes.cs" />
